@@ -13,15 +13,6 @@ const VoteButton = ({handleVote,largestVote}) => {
   )
 }
 
-const MostVoted = ({anecdotes,votes,largestVote}) => {
- 
-  return(
-    <div>
-      hi this is working  
-    </div>
-  )
-  
-}
 
 const App = () => {
   const anecdotes = [
@@ -33,9 +24,8 @@ const App = () => {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients'
   ]
-  //States
+  // App State
   const [selected, setSelected] = useState(0)
-  // intial array needs to be of a certain length rightttt
   const [votes,setVotes] = useState([0,0,0,0,0,0,0])
 
   const getRandomInt = () => {
@@ -52,15 +42,12 @@ const App = () => {
     num[selected] = num[selected]+1
     setVotes(num)
   }
-
   const largestVote = () =>{
       const max = Math.max(...votes)
-      console.log("the max votes are: ",max)
       const index = votes.indexOf(max);
-      console.log("the index is: ", index)
       return index
   }
-  
+
   return (
     <div>
       <h1>Anecdote of the Day</h1>
@@ -69,7 +56,6 @@ const App = () => {
       <NextButton handleNext = {handleNext} />
       <VoteButton handleVote = {handleVote} />
       <br/><br/>
-      {/* <button onClick={largestVote}>lar</button> */}
       <h1>Anecdote with the most votes</h1>
       {anecdotes[largestVote()]}
       <br />
@@ -77,5 +63,6 @@ const App = () => {
     </div>
   )
 }
+
 export default App
 
